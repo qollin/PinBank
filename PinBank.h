@@ -5,6 +5,7 @@
 
 class PinBank {
 public:
+	virtual ~PinBank() {}
 	virtual const int digitalRead(uint8_t pin) = 0;
 	virtual const void digitalWrite(uint8_t pin, uint8_t value) = 0;
 };
