@@ -2,7 +2,6 @@
 #define __have__PinBank_h__
 
 #include <stdint.h>
-#include <Arduino.h>
 
 class PinBank {
 public:
