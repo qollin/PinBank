@@ -10,6 +10,7 @@ MCP23017PinBank::MCP23017PinBank(Adafruit_MCP23017 mcp) : mcp(mcp) {
 const void MCP23017PinBank::setup() {
 	mcp.begin(0);
 	mcp.setupInterrupts(true,false,LOW);
+    mcp.readGPIOAB(); //this should clear any lingering interrupts
 }
 
 const int MCP23017PinBank::digitalRead(uint8_t pin) {
@@ -33,4 +34,5 @@ const void MCP23017PinBank::handleInterrupt() {
 	if (pin < NUMBER_OF_PINS && listeners[pin] != 0) {
 		listeners[pin]->handleInterrupt(pin, value);
 	}
+	mcp.readGPIOAB(); //this should clear any lingering interrupts
 }
